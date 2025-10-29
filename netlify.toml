@@ -1,0 +1,31 @@
+[build]
+  # 1. Base Directory: Tells Netlify to change into the 'frontend' folder 
+  # before running commands, as your React app is here.
+  base = "frontend"
+  
+  # 2. Build Command: Runs npm install and then npm run build inside the 'frontend' directory.
+  command = "npm install && npm run build" 
+
+  # 3. Publish Directory: Where the built React files end up (Vite default is 'dist').
+  # This path is relative to the base directory ('frontend').
+  publish = "frontend/dist" 
+
+  # 4. Functions Directory: Where your serverless functions are located. 
+  # This path is relative to the REPOSITORY ROOT.
+  functions = "api/netlify/functions" 
+
+# ----------------------------------------------------------------------
+# API REDIRECT RULE (Crucial for fixing the 404 error)
+# ----------------------------------------------------------------------
+
+# This rule proxies traffic from the friendly frontend path (/api/*) 
+# to the actual function path (/.netlify/functions/api)
+[[redirects]]
+  # The path your frontend is requesting (e.g., /api/events)
+  from = "/api/*"
+  
+  # The actual location of your serverless function
+  to = "/.netlify/functions/api/:splat"
+  
+  # A 200 status code tells Netlify to proxy the request (keep the URL the same in the browser)
+  status = 200
