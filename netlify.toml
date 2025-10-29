@@ -8,7 +8,7 @@
 
   # 3. Publish Directory: Where the built React files end up (Vite default is 'dist').
   # This path is relative to the base directory ('frontend').
-  publish = "frontend/dist" 
+  publish = "dist" 
 
   # 4. Functions Directory: Where your serverless functions are located. 
   # This path is relative to the REPOSITORY ROOT.
