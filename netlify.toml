@@ -1,0 +1,17 @@
+[build]
+  # This command is for Netlify to run during the build process
+  # If you deploy ONLY the backend, set it to "npm install"
+  # If you deploy the combined repo (backend/frontend), adjust this path later.
+  command = "echo 'No build command needed for simple setup yet'" 
+  
+  # The directory to publish the built frontend files from (placeholder for React build)
+  publish = "public" 
+
+  # The directory where Netlify will look for your serverless functions
+  functions = "netlify/functions" 
+
+# OPTIONAL: You may want to set up redirects to access the function easily
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
